@@ -3,7 +3,7 @@ from einops import rearrange, reduce, repeat
 import math
 
 rng = np.random.default_rng()
-"""
+
 original_tensor = rng.integers(low=0, high=10, size=(9,8,3))
 print(original_tensor)
 
@@ -28,9 +28,9 @@ print(composed_2.shape)
 decomposed = rearrange(original_tensor, "a (b1 b2) c -> a b1 b2 c", b1=2)
 print(decomposed)
 print(decomposed.shape)
-"""
 
-"""
+
+
 original_tensor_2 = rng.uniform(low=0, high=10, size=(6, 5, 5, 3))
 #print(original_tensor_2)
 
@@ -66,7 +66,7 @@ expanded_np = np.expand_dims(original_tensor_2, axis=(2, 4))
 print(expanded_einops)
 print(expanded_np.shape)
 np.testing.assert_equal(expanded_einops, expanded_np)
-"""
+
 
 #repeat
 
