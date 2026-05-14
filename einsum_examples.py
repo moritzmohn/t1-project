@@ -1,6 +1,6 @@
 import numpy as np
 
-
+"""
 original_tensor = np.arange(120).reshape(5, 2, 3, 4)
 print(original_tensor)
 
@@ -24,7 +24,7 @@ a = np.arange(12).reshape(3, 4)
 
 print(a)
 
-#sum over second axis
+#sum over second axis (applied along second)
 print(np.einsum('ij->i', a))
 
 np.einsum(a, [0,1], [0])
@@ -35,3 +35,12 @@ print(np.sum(a, axis=1))
 print(np.einsum('...j->...', original_tensor).shape)
 
 print(np.einsum(original_tensor, [Ellipsis,1], [Ellipsis]).shape)
+"""
+x = np.arange(120).reshape(5, 2, 3, 4)
+
+print(np.einsum('abcd->acd', x))
+'''
+print(np.einsum(x, [0,1,2,3], [0,2,3]))
+
+print(np.sum(x, axis=1))
+'''

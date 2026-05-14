@@ -1,7 +1,7 @@
 import numpy as np
 from einops import rearrange, reduce, repeat
 import math
-
+"""
 rng = np.random.default_rng()
 
 original_tensor = rng.integers(low=0, high=10, size=(9,8,3))
@@ -56,8 +56,16 @@ for i in range(5):
             b = reduced_einops[i, j, k]
             assert math.isclose(a, b, abs_tol=1e-6)
 
+"""
+#summing over axis
+
+original_tensor_4 = np.arange(120).reshape(5, 2, 3, 4)
+
+summed = reduce(original_tensor_4, "a b c d -> a c d", "sum")
+print(summed)
 
 
+"""
 #add or remove axes
 
 #add axes of size one (compare to numpy expand_dims)
@@ -86,3 +94,5 @@ print(repeat(original_tensor_3, "a b c -> a (b repeat) c", repeat=3))
 print("\n -------------------------------- \n")
 
 print(repeat(original_tensor_3, "a b c -> a b (c repeat)", repeat=3))
+
+"""
