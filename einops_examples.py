@@ -81,7 +81,7 @@ np.testing.assert_equal(expanded_einops, expanded_np)
 
 #repeat
 
-original_tensor_3 = rng.uniform(low=0, high=10, size=(3, 3, 4))
+original_tensor_3 = np.arange(36).reshape(3, 3, 4)
 
 print(original_tensor_3)
 
