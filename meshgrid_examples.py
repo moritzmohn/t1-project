@@ -9,8 +9,8 @@ from einmesh import (
 import einx
 import numpy as np
 
-
-#creating the same 2d meshgrid in einmsh, einx and numpy 
+"""
+#creating the same 2d meshgrid in einmesh, einx and numpy 
 xs, ys = LinSpace(-2, 2, 5), LinSpace(0, 1, 3)
 x_coords, y_coords = einmesh("y x", x = xs, y = ys)
 
@@ -36,8 +36,8 @@ print(coords)
 
 xs, ys = np.linspace(-2, 2, 5), np.linspace(0, 1, 3)
 
-x = einx.id("x, y-> x (1+1) y", xs, ys)
-print(x)
+coords = einx.id("x, y-> x (1+1) y", xs, ys)
+print(coords)
 
 
 
@@ -46,8 +46,8 @@ print(x)
 x = np.arange(12).reshape(3, 4)
 y = np.arange(9).reshape(3, 3)
 
-print(einx.id("a b, a c-> (1+1) a b c", x, y).shape)
-
+print(einx.id("a b, a c-> a (b + c)", x, y))
+"""
 
 #3d
 

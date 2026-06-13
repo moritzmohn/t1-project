@@ -23,17 +23,21 @@ z = einx.add("b d, b d -> b d", x, y)
 print(z.shape)
 
 # Broadcasting works as well
-x = np.random.randn(32, 128)
-bias = np.random.randn(128)
+x= np.arange(24).reshape(8, 3)
+y = np.arange(3)
 
 # Normal broadcasting in numpy
-y = x + bias 
-print(y.shape)
+z = np.add(x, y)
+print(z.shape)
 
 # Can be written as 
-y = einx.add("b d, d -> b d", x, bias)
-print(y.shape)
+z = einx.add("a b, b -> a b", x, y)
+print(z)
 # Here we explicitly show that the bias is being broadcasted along the 'b' axis, and that the output will have both 'b' and 'd' axes.
+
+#implicitly without specifying the output shape
+z = einx.add("a b, b", x, y)
+print(z)
 
 # Matrix multiplication in einx notation
 x = np.random.randn(32, 128)
