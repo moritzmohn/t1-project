@@ -9,7 +9,7 @@ from einmesh import (
 import einx
 import numpy as np
 
-"""
+
 #creating the same 2d meshgrid in einmesh, einx and numpy 
 xs, ys = LinSpace(-2, 2, 5), LinSpace(0, 1, 3)
 x_coords, y_coords = einmesh("y x", x = xs, y = ys)
@@ -47,7 +47,7 @@ x = np.arange(12).reshape(3, 4)
 y = np.arange(9).reshape(3, 3)
 
 print(einx.id("a b, a c-> a (b + c)", x, y))
-"""
+
 
 #3d
 
