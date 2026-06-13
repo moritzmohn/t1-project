@@ -11,7 +11,7 @@ print(y.shape)
 # can be written as
 y = einx.mean("b t d -> b d", x) 
 print(y.shape)
-# With the einx notaion we specifically show that we are reducing the 't' axis, 
+# With the einx notation we specifically show that we are reducing the 't' axis, 
 # and that the output will have 'b' and 'd' axes only.
 
 # A simple add opeartion between two tensors
@@ -54,3 +54,20 @@ x = np.random.randn(32, 128, 512)
 y = einx.rearrange("b t (h d) -> b h t d", x, h=8)
 print(y.shape)
 # Splitting and Grouping axes is much easier and understandable 
+
+#indexing
+
+x = np.arange(12).reshape(3, 4)
+indices = np.array([0, 1])
+
+print(einx.get_at("[z] a, b-> b a", x, indices))
+
+x = np.arange(12).reshape(3, 4)
+indices = np.array([0, 1])
+
+print(einx.get_at("a [z], b-> a b", x, indices))
+
+x = np.arange(12).reshape(3, 4)
+y = np.array([[0, 1,2, 2],[0, 1, 0, 1]])
+
+print(einx.get_at("[x] a, b a-> b a", x, y))
