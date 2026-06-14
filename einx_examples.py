@@ -142,3 +142,27 @@ print("After selection:", x_selected.shape)  # (4, 128)
 print("\nFinal tensor shape:", x_selected.shape) # (4,128)
 print("Row sums (should be close to 1.0 after softmax):")
 print(np.sum(x_selected, axis=1))
+
+#retrieve pixel colors in numpy
+
+B, H, W, C = 2, 4, 4, 3
+x   = np.random.randn(B, H * W, C)       # (b, h*w, c)
+idx = np.random.randint(0, H, size=(B, 5, 2))  # (b, i, 2)
+print(idx)
+
+
+# split h and w
+h = idx[..., 0]                # (b, i)
+w = idx[..., 1]                # (b, i)
+flat = h * W + w               # (b, i) in [0, H*W)
+# build batch indices and index into x
+b_idx = np.arange(B)[:, None]  # (b, 1) broadcasts over i
+out_np = x[b_idx, flat, :]     # (b, i, c)
+
+print(out_np)
+
+#retrieve pixel colors with einx
+
+x   = np.random.randn(B, H, W, C)
+pixel_colors = einx.get_at("b [h w] c, b  p [2] -> b p c", x, idx)
+print(pixel_colors)
